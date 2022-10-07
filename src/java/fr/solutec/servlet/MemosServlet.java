@@ -5,7 +5,6 @@
  */
 package fr.solutec.servlet;
 
-import fr.solutec.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,14 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author joelg
  */
-@WebServlet(name = "HomeServlet", urlPatterns = {"/home"})
-public class HomeServlet extends HttpServlet {
+@WebServlet(name = "MemosServlet", urlPatterns = {"/memos"})
+public class MemosServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +37,10 @@ public class HomeServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HomeServlet</title>");
+            out.println("<title>Servlet MemosServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet HomeServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet MemosServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,17 +58,7 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        HttpSession session = request.getSession();
-        User u = (User) session.getAttribute("userConnect");
-        if (u != null) {
-            request.setAttribute("user", u);
-            request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
-        }else{
-               request.setAttribute("msg", "VEUILLEZ VOUS CONNECTER !!!!!");
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-        }
-
+        request.getRequestDispatcher("WEB-INF/memos.jsp").forward(request, response);
     }
 
     /**
@@ -84,7 +72,7 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        processRequest(request, response);
     }
 
     /**

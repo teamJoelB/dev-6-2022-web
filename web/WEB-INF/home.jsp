@@ -1,6 +1,6 @@
 <%-- 
-    Document   : new
-    Created on : 7 oct. 2022, 09:28:39
+    Document   : home
+    Created on : 6 oct. 2022, 12:34:07
     Author     : joelg
 --%>
 
@@ -12,6 +12,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="menu.jsp" %>
+        <div class="container">
+            <h1 class="text-info">Hello ${user.prenom}  ${user.nom} !</h1>
+        </div>
     </body>
 </html>

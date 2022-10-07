@@ -1,6 +1,6 @@
 <%-- 
-    Document   : home
-    Created on : 6 oct. 2022, 12:34:07
+    Document   : memos
+    Created on : 6 oct. 2022, 15:29:00
     Author     : joelg
 --%>
 
@@ -13,6 +13,8 @@
     </head>
     <body>
         <%@include file="menu.jsp" %>
-        <h1>Hello Home !</h1>
+        <div class="container">
+            <h1  class="text-info">Liste de mes memos !</h1>
+        </div>
     </body>
 </html>

@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -80,13 +81,16 @@ public class ConnexionServlet extends HttpServlet {
         
         try {
             User u = UserDao.getByLoginAndPassword(log, mdp);
-        
+            
             if (u != null) {
-            request.getRequestDispatcher("home.jsp").forward(request, response);
-        } else {
-            request.setAttribute("msg", "identifiant ou mot de passe incorrect");
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-        }
+                HttpSession session = request.getSession();
+                session.setAttribute("userConnect", u);
+                // request.getRequestDispatcher("home.jsp").forward(request, response);
+                response.sendRedirect("home");
+            } else {
+                request.setAttribute("msg", "identifiant ou mot de passe incorrect");
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
         } catch (Exception e) {
             PrintWriter out = response.getWriter();
             out.println(e.getMessage());
