@@ -5,8 +5,11 @@
  */
 package fr.solutec.servlet;
 
+import fr.solutec.dao.MemoDao;
+import fr.solutec.model.Memo;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -58,7 +61,15 @@ public class MemosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/memos.jsp").forward(request, response);
+
+        try {
+            List<Memo> memos = MemoDao.getAllMemos();
+            request.setAttribute("notes", memos);
+            request.getRequestDispatcher("WEB-INF/memos.jsp").forward(request, response);
+        } catch (Exception e) {
+            PrintWriter out = response.getWriter();
+            out.println(e.getMessage());
+        }
     }
 
     /**
