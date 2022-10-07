@@ -39,7 +39,7 @@ public class HomeServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HomeServlet</title>");            
+            out.println("<title>Servlet HomeServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet HomeServlet at " + request.getContextPath() + "</h1>");
@@ -60,14 +60,15 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("userConnect");
-        if (u!=null) {
-            request.setAttribute("user",u);
+        if (u != null) {
+            request.setAttribute("user", u);
             request.getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
-        } else {
-             request.setAttribute("msg", "Veuillez vous connecter");
-             request.getRequestDispatcher("index.jsp").forward(request, response);
+        }else{
+               request.setAttribute("msg", "VEUILLEZ VOUS CONNECTER !!!!!");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
 
     }
@@ -83,7 +84,7 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     /**

@@ -13,6 +13,8 @@
     </head>
     <body>
         <%@include file="menu.jsp" %>
-        <div class ="container"><h1>Hello Memos !</h1></div>
+        <div class="container">
+            <h1  class="text-info">Liste de mes memos !</h1>
+        </div>
     </body>
 </html>

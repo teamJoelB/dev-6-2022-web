@@ -81,10 +81,10 @@ public class ConnexionServlet extends HttpServlet {
 
         try {
             User u = UserDao.getByLoginAndPassword(log, mdp);
-
+            
             if (u != null) {
                 HttpSession session = request.getSession();
-                session.setAttribute("userConnect", u); // Stocke u en session
+                session.setAttribute("userConnect", u);
                 // request.getRequestDispatcher("home.jsp").forward(request, response);
                 response.sendRedirect("home");
             } else {
