@@ -47,7 +47,7 @@
                         <button type="submit" class="btn btn-primary btn-sm btn-block">connexion</button>
                         <button type="button" onclick="location.href='inscription'" class="btn btn-link btn-sm btn-block">Inscription ?</button>
                         <br>
-                        <p class="text-danger">${msg}</p>
+                        <p class="text-danger text-center">${msg}</p>
                     </div>
                 </form>
             </div>

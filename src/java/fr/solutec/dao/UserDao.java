@@ -11,7 +11,7 @@ public class UserDao {
     
     public static User getByLoginAndPassword(String login, String password) throws  SQLException{
         User u = null;
-        String sql = "SELECT * FROM person WHERE login = ? AND mdp = ?";
+        String sql = "SELECT * FROM person WHERE login = ? AND password = ?";
         Connection connexion = AccessBd.getConnection();
         PreparedStatement prepare = connexion.prepareStatement(sql);
         prepare.setString(1, login);

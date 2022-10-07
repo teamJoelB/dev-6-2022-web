@@ -39,7 +39,7 @@
                     <a class="nav-link active white-text" href="home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link white-text" href="memos.jsp">All Memo</a>
+                    <a class="nav-link white-text" href="memos">All Memo</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link white-text" href="">Create Memo</a>
